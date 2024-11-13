@@ -2,6 +2,8 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import MoviesList from "./components/MoviesList";
 import "./style.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import MoviesDetails from "./components/MovieDetails";
 
 function App() {
   const [moviedata, setMoviedata] = useState([
@@ -171,7 +173,15 @@ function App() {
   return (
     <>
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <MoviesList moviedata={moviedata} searchQuery={searchQuery} />
+
+      <Router>
+        <Routes>
+          <Route>
+            <Route path="/" element={<MoviesList moviedata={moviedata} searchQuery={searchQuery}  />} />
+            <Route path="/movie/:id" element={<MoviesDetails moviedata={moviedata}/>} />
+          </Route>
+        </Routes>
+      </Router>
     </>
   );
 }

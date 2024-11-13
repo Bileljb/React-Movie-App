@@ -2,10 +2,12 @@ import Card from '@mui/joy/Card';
 import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
+import { useNavigate } from 'react-router-dom';
 function MovieCard({ id, title, description, poster, rate, trailer }) {
+
     return (
-        <>
-            <Card sx={{ minHeight: '280px', width: 320 }}>
+        <div >
+        <Card className={"card"} sx={{ minHeight: '280px', width: 320 }}>
                 <CardCover>
                     <img
                         src={poster}
@@ -30,7 +32,7 @@ function MovieCard({ id, title, description, poster, rate, trailer }) {
                     </Typography>
                 </CardContent>
             </Card>
-        </>
+        </div>
     );
 }
 
